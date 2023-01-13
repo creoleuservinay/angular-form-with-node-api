@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { EnrollmentService } from './enrollment.service';
 import { NotificationService } from './notification.service';
 import { User } from './user';
-import { USERDTO } from './userdto';
+import { USERDTO } from './dto/userdto';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,8 @@ export class AppComponent {
   items = ["Book", "Light"];
   topics = ["Javascript", "Mysql", "Angular"];
   countries = ["India", "USA"];
-  topicValidated = false
+  topicValidated = false;
+  
 
   userModel: USERDTO = {
     name: '',
@@ -35,10 +36,12 @@ export class AppComponent {
     this.userName = event.target.value;
   }
 
-  validateInputs(topic: string, topicObj: any) {
+  validateInputs(topic: string, topicObj: any) 
+  {
     topicObj.name == 'topic' && this.topics.includes(topic) ? this.topicValidated = true : false;
   }
-  addItem(newItem: string) {
+  addItem(newItem: string)
+  {
     newItem && this.items.indexOf(newItem) == -1 ? this.items.push(newItem) : '';
   }
   async enrollUser() {
@@ -47,7 +50,6 @@ export class AppComponent {
     await this.enrollmentService.enroll(this.userModel).subscribe(
       {
         next: (v) => {
-          console.log(v);
           this.loader = false;
           this.notify.showSuccess(v, message);
         },

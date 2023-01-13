@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let item of booksArray;">{{item ? item['name']: '' }}
+    <p>Price : {{item ? item['price']: '' }}</p>
+  </li>
+</ul>

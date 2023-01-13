@@ -7,10 +7,17 @@
     {{item}}
   </li>
 </ul> -->
+
+<nav>
+  <ul>
+    <li><a routerLink="/books" routerLinkActive="active" ariaCurrentWhenActive="page">Books</a></li>
+  </ul>
+</nav>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <form #userForm="ngForm" novalidate (ngSubmit)="enrollUser()">
+      <form #userForm="ngForm" novalidate (ngSubmit)="userForm.valid && enrollUser()">
         <div class="form-group">
           <label>{{'Name'}}</label>
           <input 
@@ -126,7 +133,6 @@
         <button
           type="submit"
           class="btn btn-primary"
-          [disabled]="userForm.form.invalid"
         >
           {{ loader ? "Loading" : "Submit" }}
         </button>
@@ -134,3 +140,5 @@
     </div>
   </div>
 </div>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

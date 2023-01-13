@@ -13,7 +13,8 @@ export class NotificationService {
   showSuccess(v: any, message: any) {
     this.toastr.success(v.email, message);
   }
-  showFail(message: any) {
+  showFail(message: any)
+  {
     this.toastr.error(message, message);
   }
 }
